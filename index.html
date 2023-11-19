@@ -7,6 +7,20 @@
     <title>読書カード</title>
   </head>
   <body>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-firestore.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBUcnxQLHISYyMQWmKuy3N0Fbp6Ps2i9Eo",
+        authDomain: "library-211e0.firebaseapp.com",
+        projectId: "library-211e0",
+        storageBucket: "library-211e0.appspot.com",
+        messagingSenderId: "648086584180",
+        appId: "1:648086584180:web:7ea8ad8368641504910a21"
+      };
+      
+      firebase.initializeApp(config);
+    </script>
     <div class="tab-003">
       <label>
         <input type="radio" name="tab-003" checked />
