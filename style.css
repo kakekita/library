@@ -1,0 +1,159 @@
+.textbox-001-label,
+.textbox-001 {
+  color: #333;
+}
+
+.textbox-001-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
+.textbox-001 {
+  width: 95%;
+  padding: 8px 10px;
+  border: 1px solid #969da3;
+  border-radius: 3px;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.textbox-001::placeholder {
+  color: #999;
+}
+
+.list-006 {
+  width: 100%;
+  height: 400px;
+  list-style-type: none;
+  overflow: auto;
+}
+
+.list-006 li {
+  margin-bottom: 5px;
+  padding: 0.5em 0.7em;
+  border-left: 5px solid #78cc33;
+  border-right: 5px solid #78cc33;
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+.button-028 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #52d025;
+}
+
+.button-028:hover {
+  border: 1px solid #52d025;
+  background-color: #fff;
+}
+
+.button-028:hover path {
+  fill: #52d025;
+}
+
+#s_table {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#s_status {
+  color: crimson;
+}
+
+#p_table {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#p_status {
+  color: crimson;
+}
+
+.main-table1 td {
+  width: 18%;
+  vertical-align: top;
+}
+
+.main-div1 {
+  width: 100%;
+  background-color: lightgreen;
+}
+
+.main-div2 {
+  width: 100%;
+  background-color: khaki;
+}
+
+.main-table1 {
+  width: 100%;
+}
+
+.top-style1 {
+  width: 100%;
+  padding: 0.1rem 2rem;
+  font-size: 40px;
+  font-weight: 900;
+  -webkit-text-stroke: 0.02em rgba(255, 255, 255, 1);
+  border-top: 4px solid #33aa33;
+  border-bottom: 4px solid #33aa33;
+}
+
+.top-style2 {
+  width: 100%;
+  padding: 0.1rem 2rem;
+  font-size: 40px;
+  font-weight: 900;
+  -webkit-text-stroke: 0.02em rgba(255, 255, 255, 1);
+  border-top: 4px solid #ffbb27;
+  border-bottom: 4px solid #ffbb27;
+}
+
+.tab-003 {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.tab-003 > label {
+  flex: 1 1;
+  order: -1;
+  min-width: 70px;
+  padding: 0.7em 1em 0.5em;
+  background-color: #f2f2f2;
+  color: #999;
+  font-weight: 600;
+  font-size: 0.9em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tab-003 > label:hover {
+  opacity: 0.8;
+}
+
+.tab-003 input[name*="tab-003"] {
+  display: none;
+}
+
+.tab-003 > table {
+  display: none;
+  width: 100%;
+  /*padding: 0.5em 1em;*/
+  background-color: #fff;
+}
+
+.tab-003 label:has(:checked) {
+  border-bottom: 4px solid #000000;
+  color: #000000;
+}
+
+.tab-003 label:has(:checked) + table {
+  display: block;
+}
