@@ -1,4 +1,9 @@
 var maxResults = 10;
+var useri = {
+  id: "201514281",
+  name: "八木睦月",
+};
+var BookList = {};
 var req = new XMLHttpRequest();
 
 var d = {};
@@ -87,8 +92,18 @@ function addData(num,s,c,d) {
   userRef.set({[s]: true}, { merge: true });
 }
 
-function getData() {
-
+function getDataList() {
+  var db = firebase.firestore();
+  var postRef1 = db.collection("name").doc(useri.id);
+  postRef1.get().then(e => {
+    var d = e.data();
+    if(d) {
+      for(var v in d) {
+        alert(d[v][0]);
+        bookList[v] = [d[v][0],d[v][1]];
+      }
+    }
+  });
 }
 
 function setup() {
