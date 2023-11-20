@@ -79,6 +79,18 @@ function addElement(id) {
   d[id] = document.getElementById(id);
 }
 
+function addData(num,s,c,d) {
+  var db = firebase.firestore();
+  var userRef = db.collection(c).doc(d);
+  num = String(num)
+  userRef.set({["book"+num]: s}, { merge: true });
+  userRef.set({[s]: true}, { merge: true });
+}
+
+function getData() {
+
+}
+
 function setup() {
   getElements();
   d["s_button"].addEventListener("click", s_input_click, false);
