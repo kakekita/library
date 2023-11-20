@@ -1,4 +1,5 @@
 var maxResults = 10;
+var s_books = [];
 var useri = {
   id: "201514281",
   name: "八木睦月",
@@ -18,7 +19,10 @@ req.onreadystatechange = function () {
       }
       for (var c = 0; c < maxResults; c++) {
         var v = data["items"][c]["volumeInfo"];
-        if ("language" in Object.keys(v) && v["language"] !== "ja") continue;
+        if ("language" in Object.keys(v) && v["language"] !== "ja") {
+          s_books.push(null);
+          continue;
+        };
         var i = {
           title: v["title"],
           authors: v["authors"][0],
@@ -33,6 +37,7 @@ req.onreadystatechange = function () {
             "https://www.hanmoto.com/bd/img/" +
             v["industryIdentifiers"][1]["identifier"] +
             "_600.jpg";
+        s_books.push(i);
         var elem = document.createElement("li");
         elem.setAttribute("id", "s_li_" + c);
         elem.addEventListener("click", s_li1_click, false);
@@ -46,7 +51,10 @@ req.onreadystatechange = function () {
   }
 };
 
-function s_li1_click(e) {}
+function s_li1_click(e) {
+  var id = parseInt(e.target.getAttribute("id").replace("s_li_"));
+  addData(Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],"name",useri["id"]);
+}
 function s_li2_click(e) {}
 
 function s_input_click(e) {
@@ -85,12 +93,11 @@ function addElement(id) {
   d[id] = document.getElementById(id);
 }
 
-function addData(num,s,c,d) {
+function addData(num,s,s2,c,d) {
   var db = firebase.firestore();
   var userRef = db.collection(c).doc(d);
   num = String(num)
-  userRef.set({["book"+num]: s}, { merge: true });
-  userRef.set({[s]: true}, { merge: true });
+  userRef.set({["book"+num]: [s,s2,true]}, { merge: true });
 }
 
 function getDataList() {
