@@ -14,6 +14,7 @@ req.onreadystatechange = function () {
     if (req.status == 200) {
       var data = eval("(" + req.responseText + ")");
       console.log(data);
+      s_books = [];
       while (d["s_list"].firstChild) {
         d["s_list"].removeChild(d["s_list"].firstChild);
       }
