@@ -47,6 +47,7 @@ req.onreadystatechange = function () {
 };
 
 function s_li1_click(e) {}
+function s_li2_click(e) {}
 
 function s_input_click(e) {
   var elem = d["s_input"];
