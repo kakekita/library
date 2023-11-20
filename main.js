@@ -105,7 +105,8 @@ function getDataList() {
         elem.setAttribute("id", "s_li2_" + v.replace("book",""));
         elem.addEventListener("click", s_li2_click, false);
         elem.textContent = bookList[v][0] + "  |  " + bookList[v][1];
-        d["s_list2"].appendChild(elem);
+        //d["s_list2"].appendChild(elem);
+        document.getElementById("s_list2").appendChild(elem);
       }
     }
   });
