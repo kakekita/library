@@ -99,8 +99,12 @@ function getDataList() {
     var d = e.data();
     if(d) {
       for(var v in d) {
-        alert(d[v][0]);
-        bookList[v] = [d[v][0],d[v][1]];
+        bookList[v] = [d[v][0],d[v][1],d[v][2]];
+        var elem = document.createElement("li");
+        elem.setAttribute("id", "s_li2_" + v.replace("book",""));
+        elem.addEventListener("click", s_li2_click, false);
+        elem.textContent = bookList[v][0] + "  |  " + bookList[v][1];
+        d["s_list2"].append(elem);
       }
     }
   });
