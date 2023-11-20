@@ -37,7 +37,7 @@ req.onreadystatechange = function () {
         elem.setAttribute("id", "s_li_" + c);
         elem.addEventListener("click", s_li1_click, false);
         elem.textContent = i["title"] + "  |  " + i["authors"];
-        d["s_list"].append(elem);
+        d["s_list"].appendChild(elem);
         getElements();
       }
     }
@@ -105,7 +105,7 @@ function getDataList() {
         elem.setAttribute("id", "s_li2_" + v.replace("book",""));
         elem.addEventListener("click", s_li2_click, false);
         elem.textContent = bookList[v][0] + "  |  " + bookList[v][1];
-        d["s_list2"].append(elem);
+        d["s_list2"].appendChild(elem);
       }
     }
   });
