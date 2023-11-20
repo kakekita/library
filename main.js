@@ -63,6 +63,10 @@ function s_li1_click(e) {
       }
     }
     addData(Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],"name",useri["id"]);
+    var elem2 = document.getElementById("s_list2");
+    while (elem2.firstChild) {
+      elem2.removeChild(elem2.firstChild);
+    }
     getDataList();
   });
 }
@@ -117,9 +121,6 @@ function getDataList() {
   postRef1.get().then(e => {
     var d2 = e.data();
     if(d2) {
-      while (document.getElementById("s_list2").firstChild) {
-        document.getElementById("s_list2").removeChild(document.getElementById("s_list2").firstChild);
-      }
       for(var v in d2) {
         bookList[v] = [d2[v][0],d2[v][1],d2[v][2]];
         var elem = document.createElement("li");
