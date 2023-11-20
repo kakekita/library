@@ -61,7 +61,7 @@ function s_li1_click(e) {
     if(d2) {
       for(var v in d2) {
         if(d2[v][0] === s_books[id]["title"]&&d2[v][1] === s_books[id]["authors"]) {
-          addData(v,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"])
+          addData(v,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
           return false
         };
       }
