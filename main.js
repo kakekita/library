@@ -3,7 +3,7 @@ var useri = {
   id: "201514281",
   name: "八木睦月",
 };
-var BookList = {};
+var bookList = {};
 var req = new XMLHttpRequest();
 
 var d = {};
