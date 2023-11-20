@@ -52,7 +52,7 @@ req.onreadystatechange = function () {
 };
 
 function s_li1_click(e) {
-  var id = parseInt(e.target.getAttribute("id").replace("s_li_"));
+  var id = parseInt(e.target.getAttribute("id").replace("s_li_",""));
   addData(Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],"name",useri["id"]);
   getDataList();
 }
