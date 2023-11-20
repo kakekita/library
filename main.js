@@ -109,6 +109,7 @@ function getDataList() {
 function setup() {
   getElements();
   d["s_button"].addEventListener("click", s_input_click, false);
+  getDataList();
 }
 
 setup();
