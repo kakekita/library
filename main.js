@@ -60,10 +60,13 @@ function s_li1_click(e) {
     var d2 = e.data();
     if(d2) {
       for(var v in d2) {
-        if(d2[v][0] === s_books[id]["title"]&&d2[v][1] === s_books[id]["authors"]) return false;
+        if(d2[v][0] === s_books[id]["title"]&&d2[v][1] === s_books[id]["authors"]) {
+          addData(v,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"])
+          return false
+        };
       }
     }
-    addData(Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],"name",useri["id"]);
+    addData("book"+Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
     var elem2 = document.getElementById("s_list2");
     while (elem2.firstChild) {
       elem2.removeChild(elem2.firstChild);
@@ -109,11 +112,11 @@ function addElement(id) {
   d[id] = document.getElementById(id);
 }
 
-function addData(num,s,s2,c,d) {
+function addData(num,s,s2,s3,c,d) {
   var db = firebase.firestore();
   var userRef = db.collection(c).doc(d);
   num = String(num);
-  userRef.set({["book"+num]: [s,s2,true]}, { merge: true });
+  userRef.set({[num]: [s,s2,s3]}, { merge: true });
 }
 
 function getDataList() {
