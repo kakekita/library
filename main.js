@@ -53,8 +53,18 @@ req.onreadystatechange = function () {
 
 function s_li1_click(e) {
   var id = parseInt(e.target.getAttribute("id").replace("s_li_",""));
-  addData(Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],"name",useri["id"]);
-  getDataList();
+  var db = firebase.firestore();
+  var postRef1 = db.collection("name").doc(useri.id);
+  postRef1.get().then(e => {
+    var d2 = e.data();
+    if(d2) {
+      for(var v in d2) {
+        if(d2[v][0] === s_books[id]["title"]&&d2[v][1] === s_books[id]["authors"]) return false;
+      }
+    }
+    addData(Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],"name",useri["id"]);
+    getDataList();
+  });
 }
 function s_li2_click(e) {}
 
@@ -97,7 +107,7 @@ function addElement(id) {
 function addData(num,s,s2,c,d) {
   var db = firebase.firestore();
   var userRef = db.collection(c).doc(d);
-  num = String(num)
+  num = String(num);
   userRef.set({["book"+num]: [s,s2,true]}, { merge: true });
 }
 
@@ -105,10 +115,13 @@ function getDataList() {
   var db = firebase.firestore();
   var postRef1 = db.collection("name").doc(useri.id);
   postRef1.get().then(e => {
-    var d = e.data();
-    if(d) {
-      for(var v in d) {
-        bookList[v] = [d[v][0],d[v][1],d[v][2]];
+    var d2 = e.data();
+    if(d2) {
+      while (document.getElementById("s_list2").firstChild) {
+        document.getElementById("s_list2").removeChild(document.getElementById("s_list2").firstChild);
+      }
+      for(var v in d2) {
+        bookList[v] = [d2[v][0],d2[v][1],d2[v][2]];
         var elem = document.createElement("li");
         elem.setAttribute("id", "s_li2_" + v.replace("book",""));
         elem.addEventListener("click", s_li2_click, false);
