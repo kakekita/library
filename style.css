@@ -1,3 +1,7 @@
+html,body{
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
 .textbox-001-label,
 .textbox-001 {
   color: #333;
