@@ -68,10 +68,6 @@ function s_li1_click(e) {
       }
     }
     if(bool) addData("book"+Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
-    var elem2 = document.getElementById("s_list2");
-    while (elem2.firstChild) {
-      elem2.removeChild(elem2.firstChild);
-    }
     getDataList();
   });
 }
@@ -91,8 +87,8 @@ function s_li2_click(e) {
     // 処理を記述
     // 回数をリセット
     count = 0
-    var elem = d["book"+e.target.id.replace("s_li2_","")];
-    elem.remove();
+    var id = "book"+e.target.id.replace("s_li2_","");
+    addData(id,bookList[id]["title"],bookList[id]["author"],true,"name",useri.id)
   }
 }
 
@@ -140,6 +136,9 @@ function addData(num,s,s2,s3,c,d) {
 }
 
 function getDataList() {
+  while (d["s_list2"].firstChild) {
+    d["s_list2"].removeChild(d["s_list2"].firstChild);
+  }
   var db = firebase.firestore();
   var postRef1 = db.collection("name").doc(useri.id);
   postRef1.get().then(e => {
