@@ -132,7 +132,9 @@ function getDataList() {
         elem.addEventListener("click", s_li2_click, false);
         elem.textContent = bookList[v][0] + "  |  " + bookList[v][1];
         //d["s_list2"].appendChild(elem);
-        document.getElementById("s_list2").appendChild(elem);
+        if(bookList[v][2]) {
+          document.getElementById("s_list2").appendChild(elem);
+        }
       }
     }
   });
