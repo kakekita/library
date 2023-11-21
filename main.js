@@ -91,7 +91,7 @@ function s_li2_click(e) {
     double_click_count = 0
     var id = "book"+e.target.id.replace("s_li2_","");
     alert(id);
-    addData(id,bookList[id]["title"],bookList[id]["author"],false,"name",useri.id);
+    addData(id,bookList[id][0],bookList[id][1],false,"name",useri.id);
     getDataList();
   }
 }
