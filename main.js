@@ -54,6 +54,7 @@ req.onreadystatechange = function () {
 
 function s_li1_click(e) {
   var id = parseInt(e.target.getAttribute("id").replace("s_li_",""));
+  var bool = true;
   var db = firebase.firestore();
   var postRef1 = db.collection("name").doc(useri.id);
   postRef1.get().then(e => {
@@ -62,11 +63,11 @@ function s_li1_click(e) {
       for(var v in d2) {
         if(d2[v][0] === s_books[id]["title"]&&d2[v][1] === s_books[id]["authors"]) {
           addData(v,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
-          return false
+          bool = false;
         };
       }
     }
-    addData("book"+Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
+    if(bool) addData("book"+Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
     var elem2 = document.getElementById("s_list2");
     while (elem2.firstChild) {
       elem2.removeChild(elem2.firstChild);
