@@ -88,7 +88,8 @@ function s_li2_click(e) {
     // 回数をリセット
     count = 0
     var id = "book"+e.target.id.replace("s_li2_","");
-    addData(id,bookList[id]["title"],bookList[id]["author"],true,"name",useri.id)
+    addData(id,bookList[id]["title"],bookList[id]["author"],false,"name",useri.id);
+    getDataList();
   }
 }
 
