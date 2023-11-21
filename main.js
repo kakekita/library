@@ -75,7 +75,26 @@ function s_li1_click(e) {
     getDataList();
   });
 }
-function s_li2_click(e) {}
+function s_li2_click(e) {
+  if (!count) {
+    // タップの回数を+1
+    count++;
+    // 500ミリ秒以内に2回目のタップがされればダブルタップと判定
+    setTimeout(function () {
+      count = 0;
+    }, 500);
+
+  // ダブルタップ
+  } else {
+    // 拡大をさせない
+    e.preventDefault();
+    // 処理を記述
+    // 回数をリセット
+    count = 0
+    var elem = d["book"+e.target.id.replace("s_li2_","")];
+    elem.remove();
+  }
+}
 
 function s_input_click(e) {
   var elem = d["s_input"];
@@ -131,10 +150,11 @@ function getDataList() {
         var elem = document.createElement("li");
         elem.setAttribute("id", "s_li2_" + v.replace("book",""));
         elem.addEventListener("click", s_li2_click, false);
+        elem.addEventListener("touchstart", s_li2_click, false);
         elem.textContent = bookList[v][0] + "  |  " + bookList[v][1];
         //d["s_list2"].appendChild(elem);
         if(bookList[v][2]) {
-          document.getElementById("s_list2").appendChild(elem);
+          d["s_list2"].appendChild(elem);
         }
       }
     }
