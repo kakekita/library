@@ -7,6 +7,8 @@ var useri = {
 var bookList = {};
 var req = new XMLHttpRequest();
 
+let double_click_count = 0;
+
 var d = {};
 
 req.onreadystatechange = function () {
@@ -72,12 +74,12 @@ function s_li1_click(e) {
   });
 }
 function s_li2_click(e) {
-  if (!count) {
+  if (!double_click_count) {
     // タップの回数を+1
-    count++;
+    double_click_count++;
     // 500ミリ秒以内に2回目のタップがされればダブルタップと判定
     setTimeout(function () {
-      count = 0;
+      double_click_count = 0;
     }, 500);
 
   // ダブルタップ
@@ -86,7 +88,7 @@ function s_li2_click(e) {
     e.preventDefault();
     // 処理を記述
     // 回数をリセット
-    count = 0
+    double_click_count = 0
     var id = "book"+e.target.id.replace("s_li2_","");
     alert(id);
     addData(id,bookList[id]["title"],bookList[id]["author"],false,"name",useri.id);
