@@ -180,7 +180,7 @@ html,body{
     width: 2.8em;
     height: 2.8em;
     border-radius: 0 3px 3px 0;
-    background-color: #29e759;
+    background-color: #52d025;
     content: '';
 }
 
@@ -203,7 +203,7 @@ html,body{
     min-width: 230px;
     height: 2.8em;
     padding: .4em 3.6em .4em .8em;
-    border: 2px solid #29e759;
+    border: 2px solid #52d025;
     border-radius: 3px;
     color: #000000;
     font-size: 1em;
@@ -211,5 +211,5 @@ html,body{
 }
 
 .selectbox-002 select:focus {
-    outline: 1px solid #29e759;
+    outline: 1px solid #52d025;
 }
