@@ -182,7 +182,7 @@ html,body{
     right: 0;
     display: inline-block;
     width: 2.8em;
-    height: 2.8em;
+    height: 40px;
     border-radius: 0 3px 3px 0;
     background-color: #52d025;
     content: '';
