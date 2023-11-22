@@ -90,7 +90,7 @@ function s_li2_click(e) {
     // 回数をリセット
     double_click_count = 0
     var id = "book"+e.target.id.replace("s_li2_","");
-    alert(id);
+    alert("削除しました。");
     addData(id,bookList[id][0],bookList[id][1],false,"name",useri.id);
     getDataList();
   }
