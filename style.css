@@ -57,13 +57,13 @@ html,body{
   background-color: #52d025;
 }
 
-.button-028:hover {
+.button-028:active {
   border: 1px solid #52d025;
   background-color: #fff;
 }
 
-.button-028:hover span {
-  fill: #52d025;
+.button-028:active span {
+  color:#52d025;
 }
 
 #s_table {
