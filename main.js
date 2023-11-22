@@ -7,7 +7,8 @@ var useri = {
 var bookList = {};
 var req = new XMLHttpRequest();
 
-let double_click_count = 0;
+let double_click_count1 = 0;
+let double_click_count2 = 0;
 
 var d = {};
 
@@ -44,6 +45,7 @@ req.onreadystatechange = function () {
         var elem = document.createElement("li");
         elem.setAttribute("id", "s_li_" + c);
         elem.addEventListener("click", s_li1_click, false);
+        elem.addEventListener("touchstart", s_li1_click, false);
         elem.textContent = i["title"] + "  |  " + i["authors"];
         d["s_list"].appendChild(elem);
         getElements();
@@ -55,31 +57,12 @@ req.onreadystatechange = function () {
 };
 
 function s_li1_click(e) {
-  var id = parseInt(e.target.getAttribute("id").replace("s_li_",""));
-  var bool = true;
-  var db = firebase.firestore();
-  var postRef1 = db.collection("name").doc(useri.id);
-  postRef1.get().then(e => {
-    var d2 = e.data();
-    if(d2) {
-      for(var v in d2) {
-        if(d2[v][0] === s_books[id]["title"]&&d2[v][1] === s_books[id]["authors"]) {
-          addData(v,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
-          bool = false;
-        };
-      }
-    }
-    if(bool) addData("book"+Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
-    getDataList();
-  });
-}
-function s_li2_click(e) {
-  if (!double_click_count) {
+  if (!double_click_count1) {
     // タップの回数を+1
-    double_click_count++;
+    double_click_count1++;
     // 500ミリ秒以内に2回目のタップがされればダブルタップと判定
     setTimeout(function () {
-      double_click_count = 0;
+      double_click_count1 = 0;
     }, 500);
 
   // ダブルタップ
@@ -88,7 +71,44 @@ function s_li2_click(e) {
     e.preventDefault();
     // 処理を記述
     // 回数をリセット
-    double_click_count = 0
+    double_click_count1 = 0
+    
+    var id = parseInt(e.target.getAttribute("id").replace("s_li_",""));
+    var bool = true;
+    var db = firebase.firestore();
+    var postRef1 = db.collection("name").doc(useri.id);
+    postRef1.get().then(e => {
+      var d2 = e.data();
+      if(d2) {
+        for(var v in d2) {
+          if(d2[v][0] === s_books[id]["title"]&&d2[v][1] === s_books[id]["authors"]) {
+            addData(v,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
+            bool = false;
+          };
+        }
+      }
+      if(bool) addData("book"+Object.keys(bookList).length,s_books[id]["title"],s_books[id]["authors"],true,"name",useri["id"]);
+      getDataList();
+    });
+  }
+}
+
+function s_li2_click(e) {
+  if (!double_click_count2) {
+    // タップの回数を+1
+    double_click_count2++;
+    // 500ミリ秒以内に2回目のタップがされればダブルタップと判定
+    setTimeout(function () {
+      double_click_count2 = 0;
+    }, 500);
+
+  // ダブルタップ
+  } else {
+    // 拡大をさせない
+    e.preventDefault();
+    // 処理を記述
+    // 回数をリセット
+    double_click_count2 = 0
     var id = "book"+e.target.id.replace("s_li2_","");
     alert("削除しました。");
     addData(id,bookList[id][0],bookList[id][1],false,"name",useri.id);
