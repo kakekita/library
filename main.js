@@ -1,4 +1,6 @@
-var maxResults = 10;
+var maxResults = 15;
+var history_search = "";
+var s_startIndex = 0;
 var s_books = [];
 var useri = {
   id: "201514281",
@@ -120,6 +122,9 @@ function s_input_click(e) {
   var elem = d["s_input"];
   if (elem.value.length <= 0) return false;
   console.log(elem.value.split(/\s+/));
+  history_search = elem.value.split(/\s+/);
+  s_startIndex = 0;
+  history_search = elem.value.split(/\s+/);
   search(elem.value.split(/\s+/));
 }
 
@@ -131,7 +136,7 @@ function search(s) {
     "https://www.googleapis.com/books/v1/volumes?maxResults=" +
       String(maxResults) +
       "&q=" +
-      s.join("+"),
+      s.join("+")+"&startIndex="+s_startIndex,
     true
   );
   req.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
@@ -187,6 +192,7 @@ function getDataList() {
 function setup() {
   getElements();
   d["s_button"].addEventListener("click", s_input_click, false);
+  d["s_more_button"].addEventListener("click", s_input_click, false);
   getDataList();
 }
 
