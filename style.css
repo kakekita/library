@@ -84,7 +84,20 @@ html,body{
   color: crimson;
 }
 
+.main-table1 {
+  width: 100%;
+}
+
 .main-table1 td {
+  width: 18%;
+  vertical-align: top;
+}
+
+.main-table2 {
+  width: 100%;
+}
+
+.main-table2 td {
   width: 18%;
   vertical-align: top;
 }
@@ -99,9 +112,7 @@ html,body{
   background-color: khaki;
 }
 
-.main-table1 {
-  width: 100%;
-}
+
 
 .top-style1 {
   width: 100%;
