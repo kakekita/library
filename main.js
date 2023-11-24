@@ -40,7 +40,7 @@ req.onreadystatechange = function () {
           publishedDate: v["publishedDate"],
         };
         console.log(i);
-        if (v["industryIdentifiers"].length > 1)
+        if ("industryIdentifiers" in Object.keys(v) &&v["industryIdentifiers"].length > 1)
           i["imageLink"] =
             "https://www.hanmoto.com/bd/img/" +
             v["industryIdentifiers"][1]["identifier"] +
