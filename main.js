@@ -124,11 +124,11 @@ function s_input_click(e) {
   var elem = d["s_input"];
   if (elem.value.length <= 0) return false;
   console.log(elem.value.split(/\s+/));
-  if(elem.value.split(/\s+/) === history_search) {
+  if(elem.value === history_search) {
     s_startIndex++;
   }else {
     s_startIndex = 0;
-    history_search = elem.value.split(/\s+/);
+    history_search = elem.value
   }
   
   search(elem.value.split(/\s+/));
