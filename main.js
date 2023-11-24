@@ -125,7 +125,7 @@ function s_input_click(e) {
   if (elem.value.length <= 0) return false;
   console.log(elem.value.split(/\s+/));
   if(elem.value === history_search) {
-    s_startIndex++;
+    s_startIndex+=maxResults;
   }else {
     s_startIndex = 0;
     history_search = elem.value
