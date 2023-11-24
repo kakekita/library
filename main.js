@@ -19,9 +19,11 @@ req.onreadystatechange = function () {
     if (req.status == 200) {
       var data = eval("(" + req.responseText + ")");
       console.log(data);
-      s_books = [];
-      while (d["s_list"].firstChild) {
-        d["s_list"].removeChild(d["s_list"].firstChild);
+      if(s_startIndex == 0) {
+        s_books = [];
+        while (d["s_list"].firstChild) {
+          d["s_list"].removeChild(d["s_list"].firstChild);
+        }
       }
       for (var c = 0; c < maxResults; c++) {
         var v = data["items"][c]["volumeInfo"];
