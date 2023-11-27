@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
     <link rel="stylesheet" href="./style.css" />
     <title>読書カード</title>
   </head>
@@ -19,12 +22,12 @@
         projectId: "library-211e0",
         storageBucket: "library-211e0.appspot.com",
         messagingSenderId: "648086584180",
-        appId: "1:648086584180:web:7ea8ad8368641504910a21"
+        appId: "1:648086584180:web:7ea8ad8368641504910a21",
       };
-      
+
       firebase.initializeApp(firebaseConfig);
     </script>
-    <div class="tab-003">
+    <div id="tab_parent" style="visibility: hidden" class="tab-003">
       <label>
         <input type="radio" name="tab-003" checked />
         本の登録
@@ -91,22 +94,33 @@
                   <tr>
                     <td style="width: 50%">
                       <label class="selectbox-002">
-                        <select>
-                          <option>optionの例1</option>
-                          <option>optionの例2</option>
-                          <option>optionの例3</option>
-                        </select>
+                        <select id="p_book_selects"></select>
                       </label>
                     </td>
                     <td style="width: 5%">
                       <span style="display: inline-block">
                         <button class="button-028" id="p_button" aria-label="page">
                           <span class="material-symbols-outlined">collections_bookmark</span>
-                          </svg>
                         </button>
                       </span>
                     </td>
-                    <td style="width:45%"></td>
+                    <td style="width: 45%"></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100%">
+                      <table id="p_table_view" class="">
+                        <tr>
+                          <th>日</th>
+                          <th>月</th>
+                          <th>火</th>
+                          <th>水</th>
+                          <th>木</th>
+                          <th>金</th>
+                          <th>土</th>
+                        </tr>
+                        
+                      </table>
+                    </td>
                   </tr>
                   <tr>
                     <td><h3 id="p_status">記録が完了しました</h3></td>
@@ -119,6 +133,71 @@
       </table>
     </div>
 
+    <div class="modal-002__wrap">
+      <input
+        type="radio"
+        id="modal-002__open"
+        class="modal-002__open-input"
+        name="modal-002__trigger"
+        style="display: none"
+        checked
+      />
+      <label for="modal-002__open" class="modal-002__open-label" style="display: none">
+        モーダルを開く
+      </label>
+      <input type="radio" id="modal-002__close" name="modal-002__trigger" style="display: none" />
+      <div class="modal-002">
+        <div class="modal-002__content-wrap">
+          <label for="modal-002__close" class="modal-002__close-label">×</label>
+          <div id="dialog_content" class="modal-002__content">
+            <table style="width: 100%">
+              <tr>
+                <td id="dialog_string" style="width: 85%">
+                  アカウント情報を入力してください。<br />未登録の場合は新規パスワードを入力してください。
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 85%">
+                  <label class="selectbox-003"><select id="d_class_number"></select></label>
+                  <label class="selectbox-003"><select id="d_user_number"></select></label>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 85%">
+                  <span style="font-size: large" id="d_user_name"></span>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 85%">
+                  <input
+                    type="password"
+                    id="d_input_password"
+                    class="textbox-001"
+                    style="width: calc(100%-25px); display: block"
+                    placeholder="パスワード"
+                  />
+                </td>
+                <td style="width: 15%">
+                  <span style="display: inline-block; margin-right: 0px">
+                    <button class="button-028" id="d_button" aria-label="save">
+                      <span class="material-symbols-outlined"> save </span>
+                    </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 85%">
+                  <span style="color: red" id="d_input_alert"></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <label for="modal-002__close">
+          <div class="modal-002__background"></div>
+        </label>
+      </div>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>
