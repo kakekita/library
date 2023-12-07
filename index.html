@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0" />
 
     <link
       rel="stylesheet"
@@ -69,7 +69,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td><h3 id="s_status">登録が完了しました</h3></td>
+                    <td><h3 id="s_status">　</h3></td>
                   </tr>
                 </table>
               </label>
@@ -79,7 +79,7 @@
       </table>
 
       <label>
-        <input type="radio" name="tab-003" />
+        <input type="radio" name="tab-003" onchange="getDataList()" />
         ページ数の記録
       </label>
       <table class="main-table2">
@@ -91,25 +91,13 @@
                   <tr>
                     <td><span class="textbox-001-label top-style2">ページ数の記録</span></td>
                   </tr>
+
                   <tr>
-                    <td style="width: 50%">
-                      <label class="selectbox-002">
-                        <select id="p_book_selects"></select>
-                      </label>
-                    </td>
-                    <td style="width: 5%">
-                      <span style="display: inline-block">
-                        <button class="button-028" id="p_button" aria-label="page">
-                          <span class="material-symbols-outlined">collections_bookmark</span>
-                        </button>
-                      </span>
-                    </td>
-                    <td style="width: 45%"></td>
-                  </tr>
-                  <tr>
-                    <td style="width: 100%">
-                      <table id="p_table_view" class="">
-                        <tr>
+                    <td
+                      style="width: 100%; height: 480px; overflow: auto; display: block; padding: 0"
+                    >
+                      <table id="p_table_view" style="width: 100%">
+                        <tr style="height: 20px; background-color: khaki">
                           <th>日</th>
                           <th>月</th>
                           <th>火</th>
@@ -118,12 +106,11 @@
                           <th>金</th>
                           <th>土</th>
                         </tr>
-                        
                       </table>
                     </td>
                   </tr>
                   <tr>
-                    <td><h3 id="p_status">記録が完了しました</h3></td>
+                    <td><h3 id="p_status">　</h3></td>
                   </tr>
                 </table>
               </label>
@@ -198,6 +185,60 @@
         </label>
       </div>
     </div>
+
+    <div class="modal-001__wrap">
+      <input
+        type="radio"
+        id="modal-001__open"
+        class="modal-001__open-input"
+        name="modal-001__trigger"
+      />
+      <label for="modal-001__open" class="modal-001__open-label" style="display: none"
+        >記録を追加</label
+      >
+      <input type="radio" id="modal-001__close" name="modal-001__trigger" />
+      <div class="modal-001">
+        <div class="modal-001__content-wrap">
+          <label for="modal-001__close" class="modal-001__close-label">×</label>
+          <div class="modal-001__content">
+            <table>
+              <tr>
+                <td style="width: 95%">
+                  <label class="selectbox-002-orange">
+                    <select id="p_book_selects"></select>
+                  </label>
+                </td>
+                <td style="width: 5%">
+                  <span style="display: inline-block">
+                    <button class="button-028-orange" id="p_button" aria-label="page">
+                      <span class="material-symbols-outlined">collections_bookmark</span>
+                    </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 95%">
+                  <label>
+                    <input
+                      type="number"
+                      id="p_page_input"
+                      class="textbox-001"
+                      placeholder="ページ数（何ページまで読んだか）"
+                      style="width: 60%; display: inline-block"
+                    />ページまで</label
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <label for="modal-001__close">
+          <div class="modal-001__background"></div>
+        </label>
+      </div>
+    </div>
+    <!--div class="modal-001__wrap">  <input type="radio" id="modal-001__open" class="modal-001__open-input" name="modal-001__trigger"/>  <label for="modal-001__open"  class="modal-001__open-label">記録を追加</label>  <input type="radio" id="modal-001__close" name="modal-001__trigger"/-->
+    <!--div class="modal-001">    <div class="modal-001__content-wrap">      <label for="modal-001__close" class="modal-001__close-label">×</label>      <div class="modal-001__content"><table><tr>                    <td style="width: 50%">                      <label class="selectbox-002">                        <select id="p_book_selects"></select>                      </label>                    </td>                    <td style="width: 5%">                      <span style="display: inline-block">                        <button class="button-028" id="p_button" aria-label="page">                          <span class="material-symbols-outlined">collections_bookmark</span>                        </button>                      </span>                    </td>                    <td style="width: 45%"></td>                  </tr>                                                                        <tr>                                                                                <td style="width: 50%">                                                                                        <label>                                                                                        <input                        type="number"                        id="p_page_input"                        class="textbox-001"                        placeholder="ページ数（何ページまで読んだか）"                                                                                                style="width:60%"                      />ページまで</label>                                                                                </td>                                                                        </tr></table></div>    </div>    <label for="modal-001__close">      <div class="modal-001__background"></div>    </label>  </div></div-->
     <script src="./main.js"></script>
   </body>
 </html>
