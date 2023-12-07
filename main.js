@@ -535,7 +535,7 @@ function setPageSelects(bl) {
 
 function getCSV() {
   var req = new XMLHttpRequest();
-  req.open("get", "list.csv", true);
+  req.open("get", "./students/list.csv", true);
   //req.open("get", "./list.csv", true);
   req.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
   req.send(null);
